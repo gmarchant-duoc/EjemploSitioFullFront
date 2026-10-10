@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "nombre": "Zapatillas",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_694848-MLC106599473613_022026-F-zapatillas-unisex-adidas-casual-daily-40-negro.webp",
+    "precio": 48000
+  },
+  {
+    "id": 2,
+    "nombre": "Polera",
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_798864-MLC96751855439_102025-F-polera-negro-algodon-lego.webp",
+    "precio": 15000
+  },
+  {
+    "id": 3,
+    "nombre": "Polera",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR50Be7fywgxSHfy61vQmpZQ5pIRclkpAmwN0a9BbAO-ZOC7CHQmFE7Gs4&s=10",
+    "precio": 15000
+  },
+  {
+    "id": 4,
+    "nombre": "Polerón",
+    "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg144reCpOKQ9CY8HVBDn6NWUG21Lw1x4SwfQJA2nTzv5WSUVKDbmBu9nI&s=10",
+    "precio": 28000
+  },
+  {
+    "id": 5,
+    "nombre": "Jeans",
+    "imagen": "https://elluscl.vtexassets.com/arquivos/ids/207702-800-auto?v=639238057715970000&width=800&height=auto&aspect=true",
+    "precio": 32000
+  },
+  {
+    "id": 6,
+    "nombre": "Chaqueta",
+    "imagen": "https://leyendaschile.cl/wp-content/uploads/2025/01/IMG_6061.jpg",
+    "precio": 45000
+  },
+  {
+    "id": 7,
+    "nombre": "Camisa",
+    "imagen": "",
+    "precio": 24000
+  },
+  {
+    "id": 8,
+    "nombre": "Short",
+    "imagen": "",
+    "precio": 18000
+  },
+  {
+    "id": 9,
+    "nombre": "Gorro",
+    "imagen": "",
+    "precio": 9000
+  },
+  {
+    "id": 10,
+    "nombre": "Mochila",
+    "imagen": "",
+    "precio": 35000
+  },
+  {
+    "id": 11,
+    "nombre": "Calcetines",
+    "imagen": "",
+    "precio": 5000
+  },
+  {
+    "id": 12,
+    "nombre": "Cinturón",
+    "imagen": "",
+    "precio": 12000
+  },
+  {
+    "id": 13,
+    "nombre": "Pantalón deportivo",
+    "imagen": "",
+    "precio": 26000
+  }
+]

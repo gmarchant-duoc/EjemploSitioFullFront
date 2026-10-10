@@ -1,0 +1,12 @@
+/* Estilos exclusivos de la página independiente de administración. */
+.admin-page {
+  min-height: 100vh;
+  background: #f5f6ee;
+}
+
+.admin-login {
+  max-width: 480px;
+  margin: 0 auto;
+  border-color: #dfe3d6;
+  border-radius: 12px;
+}

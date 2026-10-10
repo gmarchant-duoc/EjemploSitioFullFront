@@ -1,0 +1,14 @@
+.catalogo {
+  align-items: stretch;
+}
+
+/* Bootstrap resuelve los controles; estas variables adaptan sus colores al sitio. */
+.catalogo-paginacion {
+  --bs-pagination-color: #39482a;
+  --bs-pagination-hover-color: #29351d;
+  --bs-pagination-hover-bg: #f1f4e8;
+  --bs-pagination-active-bg: #39482a;
+  --bs-pagination-active-border-color: #39482a;
+  --bs-pagination-focus-color: #29351d;
+  --bs-pagination-focus-box-shadow: 0 0 0 0.2rem #a3b67730;
+}
