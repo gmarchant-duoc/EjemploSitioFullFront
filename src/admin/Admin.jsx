@@ -1,7 +1,41 @@
 import { useState } from 'react';
 import Logo from '../components/Logo';
-import productos from '../data/productos.json';
+import useProductos from '../hooks/useProductos';
 import Login from './Login';
+
+function TablaProductos() {
+  // La consulta empieza cuando se monta el panel tras el login de demostración.
+  const { productos, cargando, error } = useProductos();
+
+  if (cargando) return <p role="status">Cargando productos…</p>;
+  if (error) return <p role="alert">No se pudo cargar el catálogo.</p>;
+  if (productos.length === 0) return <p>No hay productos disponibles.</p>;
+
+  return (
+    <div className="table-responsive">
+      <table className="table align-middle mb-0">
+        <caption>Datos de muestra del catálogo público.</caption>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio (CLP)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* Desestructuramos los datos y usamos el ID como key de cada fila. */}
+          {productos.map(({ id, nombre, precio }) => (
+            <tr key={id}>
+              <th scope="row">{id}</th>
+              <td>{nombre}</td>
+              <td>${Number(precio).toLocaleString('es-CL')}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 /** El estado muestra el panel tras el login; no constituye autenticación real. */
 export default function Admin() {
@@ -43,32 +77,7 @@ export default function Admin() {
             <div className="card">
               <div className="card-body">
                 <h2 className="h4">Productos del catálogo</h2>
-                <p className="text-secondary">
-                  Vista de consulta de los {productos.length} productos definidos en el
-                  archivo JSON.
-                </p>
-                <div className="table-responsive">
-                  <table className="table align-middle mb-0">
-                    <caption>Datos de muestra del catálogo público.</caption>
-                    <thead>
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Precio (CLP)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {/* Desestructuramos los datos y usamos el ID como key de cada fila. */}
-                      {productos.map(({ id, nombre, precio }) => (
-                        <tr key={id}>
-                          <th scope="row">{id}</th>
-                          <td>{nombre}</td>
-                          <td>${Number(precio).toLocaleString('es-CL')}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                <TablaProductos />
               </div>
             </div>
           </section>

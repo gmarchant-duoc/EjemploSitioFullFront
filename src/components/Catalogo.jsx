@@ -1,15 +1,13 @@
 /** Renderiza los datos del catálogo en columnas responsive de Bootstrap. */
 import { useState } from 'react';
-import productos from '../data/productos.json';
-// Importar el JSON proporciona datos locales; aquí no se hace una llamada HTTP.
 import Producto from './Producto';
 import './Catalogo.css';
 
 // Cambiar esta constante permite ajustar el tamaño de todas las páginas.
 const PRODUCTOS_POR_PAGINA = 6;
 
-export default function Catalogo() {
-  // Solo guardamos la página elegida: los demás valores se calculan desde el JSON.
+export default function Catalogo({ productos, cargando, error }) {
+  // Guardamos la página elegida y calculamos el resto desde la respuesta de la API.
   // El setter provoca un nuevo render para mostrar las tarjetas correspondientes.
   const [paginaActual, setPaginaActual] = useState(1);
 
@@ -24,12 +22,15 @@ export default function Catalogo() {
   const inicio = (paginaVisible - 1) * PRODUCTOS_POR_PAGINA;
 
   // slice devuelve una copia del tramo: incluye inicio y excluye el índice final.
-  // No modifica el array original ni carga datos desde un servidor.
+  // La paginación se realiza en el navegador sobre los productos recibidos.
   const productosVisibles = productos.slice(inicio, inicio + PRODUCTOS_POR_PAGINA);
   const fin = inicio + productosVisibles.length;
 
   // Genera [1, 2, ...] para construir los botones numerados con map.
   const paginas = Array.from({ length: totalPaginas }, (_, indice) => indice + 1);
+  const resumen = productos.length
+    ? `Mostrando ${inicio + 1}–${fin} de ${productos.length} productos`
+    : 'No hay productos disponibles.';
 
   function cambiarPagina(numero) {
     // Protege también la función ante valores fuera del rango, además de disabled.
@@ -47,21 +48,22 @@ export default function Catalogo() {
             <h2>Catálogo de ejemplo</h2>
           </div>
           <p>
-            Productos desde JSON.
+            Productos desde la API.
             <br />
             Tarjetas con componentes React.
           </p>
         </div>
         {/* El resumen se actualiza con la página y se anuncia a lectores de pantalla. */}
-        <p className="text-secondary small" role="status">
-          {productos.length > 0
-            ? `Mostrando ${inicio + 1}–${fin} de ${productos.length} productos`
-            : 'No hay productos disponibles.'}
-        </p>
+        {error && <p role="alert">No se pudo cargar el catálogo.</p>}
+        {!error && (
+          <p className="text-secondary small" role="status">
+            {cargando ? 'Cargando productos…' : resumen}
+          </p>
+        )}
         <div className="row g-4 catalogo" id="productos-catalogo">
           {/* map transforma cada objeto en JSX; el ID estable sirve como key. */}
           {/* Bootstrap muestra dos columnas desde md y tres desde lg. */}
-          {/* Solo se renderiza el tramo de la página, no todo el archivo JSON. */}
+          {/* Solo se renderizan los productos de la página visible. */}
           {productosVisibles.map((producto) => (
             <div className="col-md-6 col-lg-4" key={producto.id}>
               {/* El spread pasa las propiedades del objeto como props al componente. */}
